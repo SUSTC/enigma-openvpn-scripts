@@ -52,7 +52,7 @@ def urlopen_try(reqURL, data = None):
 	err = None
 	postdata = None
 	if data:
-		postdata = json.dumps(data)
+		postdata = urllib.urlencode(data)
 
 	i_tries = __MAX_TRIES__
 	while (i_tries > 0):
@@ -132,7 +132,6 @@ def enigma_getenv(method):
 def enigma_call(method):
 	data = enigma_getenv(method)
 
-	print data
 	if not data:
 		os._exit(-1)
 		return
