@@ -8,6 +8,7 @@ import urllib2
 __VERSION__ = '0.1'
 __TIMEOUT__ = 10
 __MAX_TRIES__ = 3
+__DEBUG__ = False
 
 def read_config():
 	configPath = os.path.dirname(os.path.abspath(__file__)) + "/config.conf"
@@ -30,6 +31,9 @@ def read_config():
 	if not (config['key'] and config['api']):
 		print "config error"
 		os._exit(-1)
+	
+	if config['debug']:
+		__DEBUG__ = True
 
 	return config
 
@@ -137,4 +141,13 @@ def enigma_call(method):
 		return
 
 	r = enigma_request(method, data)
+	
+	if __DEBUG__:
+		f = open('/tmp/enigma-openvpn-debug.log')
+		f.write(str(data))
+		f.write('\n')
+		f.write(str(r))
+		f.write('\n')
+		close(f)
+		
 	enigma_exit(r)
