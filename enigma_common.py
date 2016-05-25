@@ -119,7 +119,7 @@ def enigma_getenv(method):
 	if method == 'auth':
 		env_reads.append('password')
 	else:
-		env_reads += [ 'ifconfig_pool_local_ip', 'ifconfig_pool_remote_ip' ]
+		env_reads += [ 'trusted_ip', 'ifconfig_pool_local_ip', 'ifconfig_pool_remote_ip' ]
 		if method == 'disconnect':
 			env_reads += [ 'bytes_received', 'bytes_sent' ]
 
