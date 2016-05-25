@@ -148,6 +148,6 @@ def enigma_call(method):
 		f.write('\n')
 		f.write(str(r))
 		f.write('\n')
-		close(f)
+		f.close()
 		
 	enigma_exit(r)
