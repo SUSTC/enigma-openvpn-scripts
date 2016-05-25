@@ -32,7 +32,7 @@ def read_config():
 		print "config error"
 		os._exit(-1)
 	
-	if (debug in config) and config['debug']:
+	if ('debug' in config) and config['debug']:
 		__DEBUG__ = True
 
 	return config
